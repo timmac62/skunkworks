@@ -7,44 +7,28 @@ This application runs on the NVidia Jetson Orin, utilizing the camera to detect 
 
 ![](header.png)
 
-## Installation
+## Development setup
 
-Linux:
+The NVidia Jetson Orin development environment is setup to utilize prebuilt docker containers
 
-```sh
-tbd
-```
+**NOTE:**  you can alternatively build these projects from source
+
+These containers include l4tpytorch and many other useful libraries and tools
+
+This application takes advantage of these containers as noted below in the Usage example
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
+Execute the following commands to get the Object Tracking application running
 
 ```sh
-make install
-npm test
+cd ~/Documents/jetson-inference
+docker/run.sh -v ~/.bash_aliases:/root/.bash_aliases --volume ~/skunkworks/:/my-object-tracking
+python3 /my_object_tracking/object_tracking.py
 ```
+
 
 ## Release History
 
 * 0.1.0
     * CHANGE: Initial implementation
-
-## Meta
-
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
-
-Distributed under the XYZ license. See ``LICENSE`` for more information.
-
-<!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki

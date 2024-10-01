@@ -1,8 +1,17 @@
-import jetson.inference
-import jetson.utils
+import jetson_inference
+import jetson_utils
 import argparse
 import sys
 import math
+
+fifo_path = "/tmp/my_fifo"
+
+def sendtofifo(message):
+    with open(fifo_path, 'w') as fifo_write:
+        print(f"sender: Sending '{message}'")
+        fifo_write.write(message + "\n")
+        fifo_write.flush()  # Ensure the message is sent immediately
+#        time.sleep(1)  # Simulate some delay between messages
 
 # Define a simple tracker class
 class ObjectTracker:
@@ -37,8 +46,9 @@ class ObjectTracker:
                     self.next_id += 1
 
                 # Print the detection with its unique identifier
-                print(f"Detected OMG {net.GetClassDesc(detection.ClassID)} ID {object_id} with confidence {detection.Confidence:.2f} at top-left ({detection.Left:.0f}, {detection.Top:.0f})")
-        
+#                print(f"Detected OMG {net.GetClassDesc(detection.ClassID)} ID {object_id} with confidence {detection.Confidence:.2f} at top-left ({detection.Left:.0f}, {detection.Top:.0f})")
+                messagetosend = f"ID: {object_id}, x: {center_x}, y: {center_y}"
+                sendtofifo(messagetosend)        
 
         # Update the tracked objects with the current frame's detections
         self.objects = updated_objects
