@@ -1,9 +1,7 @@
 # SW_ObjectTracker
 > Skunk Works Object Tracker
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+[![python](https://img.shields.io/badge/Python-3.9-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org)
 
 This application runs on the NVidia Jetson Orin, utilizing the camera to detect people, assign them a unique ID and sends that ID with X Y coordinates to an AOS app
 
