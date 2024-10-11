@@ -24,11 +24,15 @@ Execute the following commands to get the Object Tracking application running
 ```sh
 cd ~/Documents/jetson-inference
 docker/run.sh -v ~/.bash_aliases:/root/.bash_aliases --volume ~/skunkworks/:/my-object-tracking
+python3 /my_object_tracking/server.py
 python3 /my_object_tracking/object_tracking.py
 ```
 
 
 ## Release History
 
+* 0.1.1
+    * CHANGE: Changed from IPC/mkfifo to a non blocking socket using UDP, 
+    * Note that this requires **server.py** to be up and running but this server does not need to be running in container
 * 0.1.0
     * CHANGE: Initial implementation
