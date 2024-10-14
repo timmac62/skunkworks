@@ -17,6 +17,17 @@ These containers include l4tpytorch and many other useful libraries and tools
 
 This application takes advantage of these containers as noted below in the Usage example
 
+## File Descriptions
+
+| File | Description |
+| ----------- | ----------- |
+| rf.py | IPC mkfifo receiver example | 
+| sender.py | IPC mkfifo sender implementation | 
+| server.py | Socket UDP simple implementation for testing purposes | 
+| object_tracking.py | Jetson Inference application - object tracking and sending ID, X, Y coordinates | 
+
+
+
 ## Usage example
 
 Execute the following commands to get the Object Tracking application running
@@ -24,8 +35,8 @@ Execute the following commands to get the Object Tracking application running
 ```sh
 cd ~/Documents/jetson-inference
 docker/run.sh -v ~/.bash_aliases:/root/.bash_aliases --volume ~/skunkworks/:/my-object-tracking
-python3 /my_object_tracking/server.py
-python3 /my_object_tracking/object_tracking.py
+python3 /my-object-tracking/server.py
+python3 /my-object-tracking/object_tracking.py
 ```
 
 
