@@ -3,8 +3,6 @@ import jetson_utils
 import argparse
 import math
 import socket
-import select
-import sys
 
 # Define the host and port (must match the server's details)
 host = '127.0.0.1'
@@ -17,12 +15,7 @@ class ObjectTracker:
         self.next_id = 0   # The next unique identifier for new objects
 
         # Create a socket object
-        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-        # Connect to the server
-        self.client_socket.connect((host, port))
-        self.client_socket.setblocking(False)
-        print(f"Non-blocking client connected to server at {host}:{port}")
+        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     def update(self, detections):
         updated_objects = {}
@@ -53,7 +46,7 @@ class ObjectTracker:
                 # Print the detection with its unique identifier
 #                print(f"Detected OMG {net.GetClassDesc(detection.ClassID)} ID {object_id} with confidence {detection.Confidence:.2f} at top-left ({detection.Left:.0f}, {detection.Top:.0f})")
                 messagetosend = f"ID: {object_id}, x: {center_x}, y: {center_y}"
-                self.client_socket.send(messagetosend.encode('utf-8'))
+                self.client_socket.sendto(messagetosend.encode(), (host, port))
 
         # Update the tracked objects with the current frame's detections
         self.objects = updated_objects
