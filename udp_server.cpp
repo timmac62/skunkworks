@@ -38,7 +38,6 @@ int main() {
         return -1;
     }
     
-    std::cout << "UDP server  " << serverAddr.sin_addr.s_addr << "..." << std::endl;
     std::cout << "UDP server is listening on port " << PORT << "..." << std::endl;
     
     len = sizeof(clientAddr);  // Length of client address
