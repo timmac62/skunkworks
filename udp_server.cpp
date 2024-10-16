@@ -4,7 +4,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#define PORT 8080
+#define PORT 12345
 #define BUFFER_SIZE 1024
 
 // g++ udp_server.cpp udp_server
